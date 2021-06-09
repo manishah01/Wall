@@ -1,0 +1,112 @@
+* {
+    margin:0px;
+    padding:0px;
+    font-family:'Cutive Mono', monospace;
+}
+body{
+    background-color: rgb(247, 246, 245);
+}
+
+#wrapper {
+    padding:10px;
+    margin:0 auto;
+    margin-top:20px;
+    width:850px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border:2px dotted#000000;
+}
+
+a{
+margin-left: 720px;
+color:rgb(46, 26, 0)
+}
+
+h1{
+    border:2px dotted rgb(177, 172, 167);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(238, 236, 234);
+}
+
+#confirm{
+    color:blue;
+}
+
+p{
+    text-align: center;
+}
+
+
+h2{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+button{
+    padding:5px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    display:block;
+    margin-left:175px;
+}
+
+input{
+    padding:10px;
+    width:400px;
+}
+
+.message {
+    font-weight: 1000;
+    font-size: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-left: 100px;
+    margin-bottom: 20px;
+    padding:10px;
+    margin-top:10px;
+    position:relative;
+    background-color:#b6bfcd;
+    width:600px;
+    height:100px;
+} 
+
+.message::after{
+    content:"";
+    display:block;
+    position:absolute;
+    left:45px;
+    bottom:-10px;
+    border-bottom:10px solid transparent;
+    border-right:25px solid transparent;
+    border-left:25px solid #b6bfcd;
+}
+
+.individual_comment{
+    margin-left:400px;
+    margin-bottom: 20px;
+}
+
+#comment{
+    margin-top: 20px;
+    margin-left: 400px;
+}
+
+.messages{
+color:red;
+list-style-type: none;
+margin-bottom: 20px;
+}
+
+h6{
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+form{
+    margin-left:200px;
+}

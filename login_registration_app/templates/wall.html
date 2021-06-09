@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'LR.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    <div id ="wrapper">
+    <a href ="/user/signoff">Log Out</a>
+    <h1> Welcome {{user_signed_in.first_name}} {{user_signed_in.last_name}} </h1>
+    <p id ="confirm">You have successfully registered/logged in! </p>
+
+
+    <h2>Post Message to Wall</h2>
+    <form action="/wall/post_message" method="post">
+        {% csrf_token %} 
+        <input type="text" name="message">
+        <button>Post Message</button>
+
+        </form>
+        <h1>Messages Wall</h1>
+        {% for message in all_messages reversed %}
+        <div class = 'message'>
+        <h6>"{{message.message}}"</h6>
+        <p>Posted By: {{message.user_posting.first_name}} {{message.user_posting.last_name}}</p>
+        <p>Posted At: {{message.user_posting.created_at}} 
+        </div>
+
+        {% for comment in message.message_comments.all %}
+        <div class ="individual_comment">
+        <p>"{{comment.comment}}"</p>
+        <p>Comment By: {{comment.user_posting.first_name}}  {{comment.user_posting.last_name}}</p>
+        <p>Posted At: {{comment.user_posting.created_at}}</p>
+        </div>
+        {% endfor %}
+
+        <form action="/wall/post_comment/{{message.id}}" method="post" id="comment">
+            {% csrf_token %} 
+            <input type="text" name="comment">
+            <button>Post Comment</button>
+        </form>
+        
+        {% endfor %}
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'LR.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Information</title>
+</head>
+    <title>Login and Registration</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Register Here</h1>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li>{{ message }}  </li>  
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <form action="user/create" method="post">
+        {% csrf_token %} 
+        <h2>First Name</h2>
+        <input type="text" name="first_name">
+        <h2>Last Name</h2>
+        <input type="text" name="last_name">
+        <h2>Email</h2>
+        <input type="text" name="email">
+        <h2>Password</h2>
+        <input type="text" name="password">
+        <h2>Confirm Password</h2>
+        <input type=text  name="confirm_password">
+        <button>Register</button>
+    </form>
+
+    <h1>Login Here</h1>
+    <form action="/user/signon" method="post">
+        {% csrf_token %} 
+        <h2>Email</h2>
+        <input type="text" name="email">
+        <h2>Password</h2>
+        <input type="text" name="password">
+        <button>Log In</button>
+        </form>
+    </div>
+</body>
+</html>
