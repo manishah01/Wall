@@ -13,18 +13,30 @@
     <div id ="wrapper">
     <a href ="/user/signoff">Log Out</a>
     <h1> Welcome {{user_signed_in.first_name}} {{user_signed_in.last_name}} </h1>
-    <p id ="confirm">You have successfully registered/logged in! </p>
+    
 
 
     <h2>Post Message to Wall</h2>
-    <form action="/wall/post_message" method="post">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li>{{ message }} </li>  
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/wall/post_message" method="post" enctype="multipart/form-data">
         {% csrf_token %} 
         <input type="text" name="message">
+        <br>Attach Image
+        <input type="file" name="image">
         <button>Post Message</button>
 
         </form>
         <h1>Messages Wall</h1>
         {% for message in all_messages reversed %}
+        {% if message.message_image %}
+        <img src="/media/{{message.message_image}}">
+        {% endif %}
         <div class = 'message'>
         <h6>"{{message.message}}"</h6>
         <p>Posted By: {{message.user_posting.first_name}} {{message.user_posting.last_name}}</p>

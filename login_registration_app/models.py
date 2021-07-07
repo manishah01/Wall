@@ -1,16 +1,21 @@
 from django.db import models
 import re 
 
-
-
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
-
+NAME_REGEX = re.compile(r'^[a-zA-Z ]')
 
 class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
+
+        if not NAME_REGEX.match(postData['first_name']):
+            errors['first_name'] = "FIRST NAME MUST BE LETTERS ONLY"
+
         if len(postData['first_name']) < 2:
             errors['first_name'] = "FIRST NAME MUST BE ATLEAST 2 CHARACTERS"
+
+        if not NAME_REGEX.match(postData['last_name']):           
+            errors['last_name'] = "LAST NAME MUST BE LETTERS ONLY"
         
         if len(postData['last_name']) < 2:
             errors['last_name'] = "LAST NAME MUST BE ATLEAST 2 CHARACTERS"
@@ -49,6 +54,7 @@ class MessageManager(models.Manager):
 
 class Message(models.Model):
     message = models.CharField(max_length=255)
+    message_image =models.ImageField(null=True, blank=True, upload_to="images/") 
     user_posting = models.ForeignKey(User, related_name='user_messages', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

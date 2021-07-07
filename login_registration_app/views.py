@@ -58,6 +58,7 @@ def post_message(request):
         else:
             Message.objects.create(
                 message = request.POST['message'], 
+                message_image = request.FILES.get('image'),
                 user_posting = User.objects.get(id=request.session['user_signed_in'])
                 )
             return redirect('/wall')

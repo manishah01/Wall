@@ -65,7 +65,7 @@ input{
     margin-bottom: 20px;
 }
 
-.message {
+.message{
     margin-left: 100px;
     margin-bottom: 20px;
     padding:10px;
@@ -95,6 +95,14 @@ input{
 #comment{
     margin-top: 20px;
     margin-left: 400px;
+}
+
+img{
+    border:3px dotted rgb(177, 172, 167);
+    height:150px;
+    width:180px;
+    margin-left: 150px;
+    border-radius: 25px;
 }
 
 .messages{
